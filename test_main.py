@@ -27,10 +27,13 @@ def test_sign_verify():
 
 
 def test_genesis():
+    seed_hash = bytes.fromhex(
+        "63eceef7919087068ac5d1b7faffa23fc90a58ad0ca89ecb224a2ef7ba282d48"
+    )
     receiver = "test2"
     amount = 0.001
 
     tx = []
     tx.append(Transaction(pk, receiver, amount, sk))
 
-    block = Block(tx=tx)
+    block = Block(tx=tx, seed_hash=seed_hash, nonce=0)
