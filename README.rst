@@ -2,15 +2,15 @@
  bitq
 ******
 
-A bitcoin generation 3 protocol in python.
+A bitcoin gen3 protocol written in python.
 
 Our features
 
-- RandomX proof of work algorithm
+- SHA-3 proof of work algorithm
 
-- shake_256 tx signatures
+- shake_256 tx and block signatures
 
-- SHA-3 block signatures
+- SHA-3 tx and block hashes
 
 - 4 MB blocks and 2 minute windows
 

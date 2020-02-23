@@ -1,6 +1,4 @@
-requests==2.21.0
-pyrandx==0.0.6
+requests==2.23.0
 pyspx==0.4.0
-pytest==5.3.4
+pytest==5.3.5
 scrypt==0.8.13
-
