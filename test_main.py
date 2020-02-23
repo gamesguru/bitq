@@ -1,3 +1,4 @@
+import json
 import os
 
 import pyspx.shake256_128s as sphincs
@@ -11,8 +12,7 @@ def test_gen_wallet():
     seed = os.urandom(sphincs.crypto_sign_SEEDBYTES)
     pk, sk = sphincs.generate_keypair(seed)
     print()
-    print("pk: " + pk.hex())
-    print("sk: " + sk.hex())
+    print(json.dumps({"pk": pk.hex(), "sk": sk.hex()}, indent=2))
 
 
 def test_sign_verify():

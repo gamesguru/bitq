@@ -23,12 +23,13 @@ Generate a key with a call such as
 
 .. code-block :: python3
 
+    import json
     import os
     import pyspx.shake256_128s as sphincs
     seed = os.urandom(sphincs.crypto_sign_SEEDBYTES)
     pk, sk = sphincs.generate_keypair(seed)
-    print("pk: " + pk.hex())
-    print("sk: " + sk.hex())
+    print(json.dumps({"pk": pk.hex(), "sk": sk.hex()}, indent=2))
+
 
 This can be accomplished with the ``test_gen_wallet`` test.
 
@@ -47,9 +48,9 @@ The user folder can be found at,
 
 .. code-block ::
 
-    C:\Users\Shane [Windows]
-    /Users/shane   [macOS]
-    /home/shane    [Linux]
+    C:\Users\Shane     [Windows]
+    /Users/shane       [macOS]
+    /home/shane        [Linux]
 
 Sending Payments
 ################
