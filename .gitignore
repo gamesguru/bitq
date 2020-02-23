@@ -6,6 +6,7 @@
 
 # Our files
 .vscode/
+*.db
 
 ####################
 ## Python Ignores ##

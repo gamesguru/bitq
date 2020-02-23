@@ -37,3 +37,10 @@ def test_genesis():
     tx.append(Transaction(pk, receiver, amount, sk))
 
     block = Block(tx=tx, seed_hash=seed_hash, nonce=0)
+
+
+def test_create_teardown_db():
+    from qc.sql import sql
+
+    r = sql("SELECT * FROM qubit")
+    print(r)
