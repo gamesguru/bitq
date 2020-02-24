@@ -66,9 +66,6 @@ Mining
 
 The command line is currently designed for single user.
 
-RandomX favors consumer CPUs.
-We may test GPU-specific algos also.
-
 To set your machine to mine, simply run
 
 ``qc mine``
