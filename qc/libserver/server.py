@@ -2,8 +2,34 @@ import socket
 
 import miniupnpc
 
-upnp = miniupnpc.UPnP()
-upnp.addportmapping(8333, "TCP", "192.168.0.2", 8333, "coin-port", "")
+u = miniupnpc.UPnP()
+u.discoverdelay = 200
+# u.minissdpdsocket = '../minissdpd/minissdpd.sock'
+# discovery process, it usually takes several seconds (2 seconds or more)
+print("Discovering... delay=%ums" % u.discoverdelay)
+print(u.discover(), "device(s) detected")
+# select an igd
+u.selectigd()
+print(u.statusinfo(), u.connectiontype())
+# print u.addportmapping(64000, 'TCP',
+#                       '192.168.1.166', 63000, 'port mapping test', '')
+# print u.deleteportmapping(64000, 'TCP')
+port = 0
+proto = "UDP"
+# list the redirections :
+i = 0
+while True:
+    p = u.getgenericportmapping(i)
+    if p == None:
+        break
+    print(i, p)
+    (port, proto, (ihost, iport), desc, c, d, e) = p
+    # print port, desc
+    i = i + 1
+u.addportmapping(8333, "TCP", "192.168.0.2", 8333, "coin-port", "")
+
+#########
+# Connect
 serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # serv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 serv.bind(("0.0.0.0", 8333))
