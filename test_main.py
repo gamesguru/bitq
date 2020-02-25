@@ -48,6 +48,10 @@ def test_sign_verify():
     assert not sphincs.verify(message, fake_sig, bytes.fromhex(pk))
 
 
+def test_server():
+    pass
+
+
 def test_genesis():
     seed_hash = bytes.fromhex(
         "63eceef7919087068ac5d1b7faffa23fc90a58ad0ca89ecb224a2ef7ba282d48"

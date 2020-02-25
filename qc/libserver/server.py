@@ -1,5 +1,9 @@
 import socket
 
+import miniupnpc
+
+upnp = miniupnpc.UPnP()
+upnp.addportmapping(8333, "TCP", "192.168.0.2", 8333, "coin-port", "")
 serv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 # serv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 serv.bind(("0.0.0.0", 8333))
