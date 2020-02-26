@@ -52,6 +52,16 @@ The user folder can be found at,
     /Users/shane       [macOS]
     /home/shane        [Linux]
 
+Addresses
+#########
+
+Addresses in v1 protocol take the following form
+
+``v1_0fcb34_``
+
+The "v1" indicates the version and the hexidecimal part is the "checksum",
+which validates the rest of the address within a probability of 1 in 2^32.
+
 Sending Payments
 ################
 

@@ -1,0 +1,4 @@
+P2PKH, static P2SH, bech32 (bc1 segwit)
+delegated historical nodes, miners, and nodes
+1 in 2^32 chance of mistyped address being accepted
+

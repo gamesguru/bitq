@@ -3,7 +3,7 @@ import json
 import pyspx.shake256_128s as sphincs
 import pytest
 
-from qc.crypt import generate_keypair, v1_address
+from qc.crypt import generate_keypair, pk2address, verify_address
 from qc.utils import ip, pk, sk
 from qc.utils.clstructs import Block, Transaction
 
@@ -21,20 +21,25 @@ def test_gen_wallet():
         "doggerel",
         "inconspicuousness",
     ]
-    password = "sEc/Re_t"
+    password = "B0Ymz0yC"
 
     pk, sk = generate_keypair(seed_words, password)
     print(json.dumps({"pk": pk.hex(), "sk": sk.hex()}, indent=2))
-    address = v1_address(pk, n_id=0x00)
+    address = pk2address(pk, version=0x01)
 
+    # Checks
+    assert verify_address(address)[0]
     assert (
-        pk.hex() == "9c2c1c48b6b1d3925415fae598dbcd7c01b9dba503319399398c8b9b5b7da7c6"
+        pk.hex() == "9eae33ee33a98225f253416339d49b16f02e6ed2c87a8c6b82b46d21e9d57f33"
     )
     assert (
         sk.hex()
-        == "a869b534aa9dbce884f8c077b09b9e6b075d4ed4ee7cedf64e9492d4dc55369f9c2c1c48b6b1d3925415fae598dbcd7c01b9dba503319399398c8b9b5b7da7c6"
+        == "1fd378132ea92f67e129c05d3e8fca3bdc442c9aef2cc2efb3a7b985a95b32429eae33ee33a98225f253416339d49b16f02e6ed2c87a8c6b82b46d21e9d57f33"
     )
-    assert address == "0K_I$DvCl%&Ud4U(VhmJ5U`X1U~Wud!W=$H3i!3g*S7v9-T"
+    assert (
+        address
+        == "v1_1fdae0bd63796e3dd78a2c223ee569a40c0f34c777a3656d3a7cbca79ee1b7ea_234f6c97"
+    )
 
 
 def test_sign_verify():
