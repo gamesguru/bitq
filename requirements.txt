@@ -1,5 +1,5 @@
 miniupnpc==2.0.2
-requests==2.23.0
+requests==2.31.0
 pyspx==0.4.0
 pytest==5.3.5
 scrypt==0.8.13
